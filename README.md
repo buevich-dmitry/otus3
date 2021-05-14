@@ -1,6 +1,6 @@
 To download and install the latest version, run:
 ```
-wget -O print_ip-Linux.deb https://github.com/buevich-dmitry/otus2/releases/latest/download/print_ip-Linux.deb
+wget -O print_ip-Linux.deb https://github.com/buevich-dmitry/otus3/releases/latest/download/print_ip-Linux.deb
 sudo dpkg -i print_ip-Linux.deb
 ```
 
