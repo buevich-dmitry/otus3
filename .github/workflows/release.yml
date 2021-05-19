@@ -37,3 +37,6 @@ jobs:
           asset_path: ./bin/print_ip-1.0.0-Linux.deb
           asset_name: print_ip-Linux.deb
           asset_content_type: application/vnd.debian.binary-package
+      - name: Make Doxygen
+        id: make_doxygen
+        uses: mattnotmitt/doxygen-action@v1
