@@ -1,3 +1,5 @@
+Doxygen documentation link: https://buevich-dmitry.github.io/otus3/
+
 To download and install the latest version, run:
 ```
 wget -O print_ip-Linux.deb https://github.com/buevich-dmitry/otus3/releases/latest/download/print_ip-Linux.deb
