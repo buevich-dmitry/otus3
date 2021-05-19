@@ -40,3 +40,8 @@ jobs:
       - name: Make Doxygen
         id: make_doxygen
         uses: mattnotmitt/doxygen-action@v1
+      - name: Deploy Doxygen to Github
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./html
