@@ -107,27 +107,27 @@ Functions</h2></td></tr>
 <tr class="memitem:a146bc4511faa15663cc2d0a43f664195"><td class="memTemplParams" colspan="2">template&lt;class T , typename  = std::enable_if_t&lt;std::is_same_v&lt;std::string, T&gt;&gt;&gt; </td></tr>
 <tr class="memitem:a146bc4511faa15663cc2d0a43f664195"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="print__ip_8h.html#a146bc4511faa15663cc2d0a43f664195">PrintIp</a> (const T &amp;string_value, std::ostream &amp;out=std::cout)</td></tr>
 <tr class="separator:a146bc4511faa15663cc2d0a43f664195"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaabd39b789386d73c480ad028e85c822"><td class="memTemplParams" colspan="2">template&lt;class T , typename  = std::enable_if_t&lt;std::is_same_v&lt;decltype(std::declval&lt;T&gt;().begin()), typename T::iterator&gt;, typename  = std::enable_if_t&lt;std::is_same_v&lt;decltype(std::declval&lt;T&gt;().end()), typename T::iterator&gt;, typename  = std::enable_if_t&lt;std::is_integral_v&lt;typename T::value_type&gt;&gt;, typename  = std::enable_if_t&lt;!std::is_same_v&lt;T, std::string&gt;&gt;&gt; </td></tr>
-<tr class="memitem:aaabd39b789386d73c480ad028e85c822"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="print__ip_8h.html#aaabd39b789386d73c480ad028e85c822">PrintIp</a> (const T &amp;container_value, std::ostream &amp;out=std::cout)</td></tr>
-<tr class="separator:aaabd39b789386d73c480ad028e85c822"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42138bbe12fa9cb42d4f785f96879817"><td class="memTemplParams" colspan="2">template&lt;template&lt; class, class... &gt; class Container, class ValueType , class... Other, typename  = std::enable_if_t&lt;                (std::is_same&lt;Container&lt;ValueType&gt;, std::vector&lt;ValueType&gt;&gt;::value                 || std::is_same&lt;Container&lt;ValueType&gt;, std::list&lt;ValueType&gt;&gt;::value),                int&gt;&gt; </td></tr>
+<tr class="memitem:a42138bbe12fa9cb42d4f785f96879817"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="print__ip_8h.html#a42138bbe12fa9cb42d4f785f96879817">PrintIp</a> (const Container&lt; ValueType, Other... &gt; &amp;container_value, std::ostream &amp;out=std::cout)</td></tr>
+<tr class="separator:a42138bbe12fa9cb42d4f785f96879817"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a792901b2fbf7de3ed2a1fcbecd4e0fa6"><td class="memTemplParams" colspan="2">template&lt;class Arg , class... Args, typename  = std::enable_if_t&lt;std::conjunction_v&lt;std::is_same&lt;Arg, Args&gt;...&gt;&gt;&gt; </td></tr>
 <tr class="memitem:a792901b2fbf7de3ed2a1fcbecd4e0fa6"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="print__ip_8h.html#a792901b2fbf7de3ed2a1fcbecd4e0fa6">PrintIp</a> (const std::tuple&lt; Arg, Args... &gt; &amp;tuple_value, std::ostream &amp;out=std::cout)</td></tr>
 <tr class="separator:a792901b2fbf7de3ed2a1fcbecd4e0fa6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a792901b2fbf7de3ed2a1fcbecd4e0fa6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a792901b2fbf7de3ed2a1fcbecd4e0fa6">&#9670;&nbsp;</a></span>PrintIp() <span class="overload">[1/4]</span></h2>
+<a id="a42138bbe12fa9cb42d4f785f96879817"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42138bbe12fa9cb42d4f785f96879817">&#9670;&nbsp;</a></span>PrintIp() <span class="overload">[1/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Arg , class... Args, typename  = std::enable_if_t&lt;std::conjunction_v&lt;std::is_same&lt;Arg, Args&gt;...&gt;&gt;&gt; </div>
+template&lt;template&lt; class, class... &gt; class Container, class ValueType , class... Other, typename  = std::enable_if_t&lt;                (std::is_same&lt;Container&lt;ValueType&gt;, std::vector&lt;ValueType&gt;&gt;::value                 || std::is_same&lt;Container&lt;ValueType&gt;, std::list&lt;ValueType&gt;&gt;::value),                int&gt;&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">void PrintIp </td>
           <td>(</td>
-          <td class="paramtype">const std::tuple&lt; Arg, Args... &gt; &amp;&#160;</td>
-          <td class="paramname"><em>tuple_value</em>, </td>
+          <td class="paramtype">const Container&lt; ValueType, Other... &gt; &amp;&#160;</td>
+          <td class="paramname"><em>container_value</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -145,19 +145,19 @@ template&lt;class Arg , class... Args, typename  = std::enable_if_t&lt;std::conj
 
 </div>
 </div>
-<a id="aaabd39b789386d73c480ad028e85c822"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaabd39b789386d73c480ad028e85c822">&#9670;&nbsp;</a></span>PrintIp() <span class="overload">[2/4]</span></h2>
+<a id="a792901b2fbf7de3ed2a1fcbecd4e0fa6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a792901b2fbf7de3ed2a1fcbecd4e0fa6">&#9670;&nbsp;</a></span>PrintIp() <span class="overload">[2/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class T , typename  = std::enable_if_t&lt;std::is_same_v&lt;decltype(std::declval&lt;T&gt;().begin()), typename T::iterator&gt;, typename  = std::enable_if_t&lt;std::is_same_v&lt;decltype(std::declval&lt;T&gt;().end()), typename T::iterator&gt;, typename  = std::enable_if_t&lt;std::is_integral_v&lt;typename T::value_type&gt;&gt;, typename  = std::enable_if_t&lt;!std::is_same_v&lt;T, std::string&gt;&gt;&gt; </div>
+template&lt;class Arg , class... Args, typename  = std::enable_if_t&lt;std::conjunction_v&lt;std::is_same&lt;Arg, Args&gt;...&gt;&gt;&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">void PrintIp </td>
           <td>(</td>
-          <td class="paramtype">const T &amp;&#160;</td>
-          <td class="paramname"><em>container_value</em>, </td>
+          <td class="paramtype">const std::tuple&lt; Arg, Args... &gt; &amp;&#160;</td>
+          <td class="paramname"><em>tuple_value</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>

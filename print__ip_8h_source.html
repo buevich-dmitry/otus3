@@ -110,28 +110,31 @@ $(function() {
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    out &lt;&lt; string_value &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;}</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class </span>T,</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keyword">typename</span> = std::enable_if_t&lt;std::is_same_v&lt;decltype(std::declval&lt;T&gt;().begin()), <span class="keyword">typename</span> T::iterator&gt;&gt;,</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keyword">typename</span> = std::enable_if_t&lt;std::is_same_v&lt;decltype(std::declval&lt;T&gt;().end()), <span class="keyword">typename</span> T::iterator&gt;&gt;,</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keyword">typename</span> = std::enable_if_t&lt;std::is_integral_v&lt;typename T::value_type&gt;&gt;,</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keyword">typename</span> = std::enable_if_t&lt;!std::is_same_v&lt;T, std::string&gt;&gt;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;&gt;</div>
-<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="print__ip_8h.html#aaabd39b789386d73c480ad028e85c822">   52</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="print__ip_8h.html#a294c4164ffdb55e2519a6285767efc74">PrintIp</a>(<span class="keyword">const</span> T&amp; container_value, std::ostream&amp; out = std::cout) {</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">bool</span> first = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; element : container_value) {</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keywordflow">if</span> (!first) {</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            out &lt;&lt; <span class="charliteral">&#39;.&#39;</span>;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        }</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        first = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        out &lt;&lt; element;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    }</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    out &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;}</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class </span>Arg, <span class="keyword">class</span>... Args, <span class="keyword">typename</span> = std::enable_if_t&lt;std::conjunction_v&lt;std::is_same&lt;Arg, Args&gt;...&gt;&gt;&gt;</div>
-<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="print__ip_8h.html#a792901b2fbf7de3ed2a1fcbecd4e0fa6">   65</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="print__ip_8h.html#a294c4164ffdb55e2519a6285767efc74">PrintIp</a>(<span class="keyword">const</span> std::tuple&lt;Arg, Args...&gt;&amp; tuple_value, std::ostream&amp; out = std::cout) {</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    PrintTupleElements(tuple_value, out);</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keyword">template</span> &lt;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keyword">template</span> &lt;<span class="keyword">class</span>, <span class="keyword">class</span>...&gt; <span class="keyword">class </span>Container,</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keyword">class </span>ValueType,</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keyword">class</span>... Other,</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keyword">typename</span> = std::enable_if_t&lt;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                (std::is_same&lt;Container&lt;ValueType&gt;, std::vector&lt;ValueType&gt;&gt;::value</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                 || std::is_same&lt;Container&lt;ValueType&gt;, std::list&lt;ValueType&gt;&gt;::value),</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                <span class="keywordtype">int</span>&gt;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;&gt;</div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="print__ip_8h.html#a42138bbe12fa9cb42d4f785f96879817">   55</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="print__ip_8h.html#a294c4164ffdb55e2519a6285767efc74">PrintIp</a>(<span class="keyword">const</span> Container&lt;ValueType, Other...&gt;&amp; container_value, std::ostream&amp; out = std::cout) {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">bool</span> first = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; element : container_value) {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keywordflow">if</span> (!first) {</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            out &lt;&lt; <span class="charliteral">&#39;.&#39;</span>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        }</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        first = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        out &lt;&lt; element;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    }</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    out &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;}</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class </span>Arg, <span class="keyword">class</span>... Args, <span class="keyword">typename</span> = std::enable_if_t&lt;std::conjunction_v&lt;std::is_same&lt;Arg, Args&gt;...&gt;&gt;&gt;</div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="print__ip_8h.html#a792901b2fbf7de3ed2a1fcbecd4e0fa6">   68</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="print__ip_8h.html#a294c4164ffdb55e2519a6285767efc74">PrintIp</a>(<span class="keyword">const</span> std::tuple&lt;Arg, Args...&gt;&amp; tuple_value, std::ostream&amp; out = std::cout) {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    PrintTupleElements(tuple_value, out);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;}</div>
 <div class="ttc" id="aprint__ip_8h_html_a294c4164ffdb55e2519a6285767efc74"><div class="ttname"><a href="print__ip_8h.html#a294c4164ffdb55e2519a6285767efc74">PrintIp</a></div><div class="ttdeci">void PrintIp(T integral_value, std::ostream &amp;out=std::cout)</div><div class="ttdef"><b>Definition:</b> print_ip.h:29</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
