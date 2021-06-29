@@ -43,13 +43,16 @@ void PrintIp(const T& string_value, std::ostream& out = std::cout) {
     out << string_value << '\n';
 }
 
-template <class T,
-        typename = std::enable_if_t<std::is_same_v<decltype(std::declval<T>().begin()), typename T::iterator>>,
-        typename = std::enable_if_t<std::is_same_v<decltype(std::declval<T>().end()), typename T::iterator>>,
-        typename = std::enable_if_t<std::is_integral_v<typename T::value_type>>,
-        typename = std::enable_if_t<!std::is_same_v<T, std::string>>
+template <
+        template <class, class...> class Container,
+        class ValueType,
+        class... Other,
+        typename = std::enable_if_t<
+                (std::is_same<Container<ValueType>, std::vector<ValueType>>::value
+                 || std::is_same<Container<ValueType>, std::list<ValueType>>::value),
+                int>
 >
-void PrintIp(const T& container_value, std::ostream& out = std::cout) {
+void PrintIp(const Container<ValueType, Other...>& container_value, std::ostream& out = std::cout) {
     bool first = true;
     for (const auto& element : container_value) {
         if (!first) {
